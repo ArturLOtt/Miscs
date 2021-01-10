@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+<html lang=”pt-br”>
+<head>
+<title>Automessage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+</style>
+</head>
+
+
+<body>
+
+	<div>
+	
+		<h1>Doc de mensagens</h1>
+		<h4>version 1.2.6</h4>
+		
+		<div class="analiseRelatorio">
+		<!--<h4>analise de Relatorio</h4>-->
+			<input type="text" readonly value="ANALISE DE RELATÓRIO (ATUALIZADO), SEM A NECESSIDADE DE CONTATO." id="analis" style="background-color: #ccc">
+
+			<div class="tooltip">
+				<button onclick="copiarAnalis()" onmouseout="outFunc()" style="background-color: #87CEFA">
+					<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+					Copiar analise de relatório concluida
+				</button>
+			</div>	
+		</div>	
+		
+		<br>
+		<hr>
+		
+		<div class="respostasAssociado" style="display:flex; justify-content:space-between;">
+			<div class="condutorEstaBem">
+			<input type="text" readonly value="CONFORME CONTATO COM O ASSOCIADO, TUDO OK COM O VEÍCULO." id="estabem" style="background-color: #ccc">
+		
+			<div class="tooltip">
+				<button onclick="copiarEstaBemCondutor()" onmouseout="outFunc()" style="background-color: #90EE90">
+				<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+				Copiar condutor esta bem
+				</button>
+			</div>
+			</div>
+			<div class="veiculomanutencao">
+			<input type="text" readonly value="EM CONTATO COM CONDUTOR O MESMO NOS INFORMOU QUE O VEÍCULO ESTÁ EM MANUTENÇÃO" id="manutencado" style="background-color: #ccc">
+		
+			<div class="tooltip">
+				<button onclick="copiarManutencaoVeiculo()" onmouseout="outFunc()" style="background-color: #AFEEEE">
+				<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+				Copiar veiculo manutencao
+				</button>
+			</div>
+			</div>
+			<div class="veiculojammer">
+			<input type="text" readonly value="FIM DA DETECÇÃO DE JAMMER, VEICULO ESTA POSICIONANDO NORMALMENTE." id="jammerado" style="background-color: #ccc">
+		
+			<div class="tooltip">
+				<button onclick="copiarJammeradoVeiculo()" onmouseout="outFunc()" style="background-color: #9ACD32">
+					<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+					Copiar veiculo jammer esta bem
+				</button>
+			</div>
+			</div>
+			<div class="veiculogaragem">
+			<input type="text" readonly value="VEICULO EM GARAGEM." id="garagem" style="background-color: #ccc">
+		
+			<div class="tooltip">
+				<button onclick="copiarGaragemVeiculo()" onmouseout="outFunc()" style="background-color: #3db556">
+					<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+					Copiar veiculo garagem
+				</button>
+			</div>
+			</div>
+			</div>
+		</div>
+		<br>
+		<hr>
+
+		<div class="mudarPlaca" style="display: flex; flex-direction: column; align-items: center;">
+
+			<form id="diatarnoi">
+				<p><b>Selecione a hora:</b></p>
+				<input type="radio" id="mor" name="age" value="1" onclick="mudarHora(this.value)">
+				<label for="manhã"> Dia </label><br>
+				<input type="radio" id="tar" name="age" value="2" onclick="mudarHora(this.value)">
+				<label for="tarde"> Tarde </label><br>  
+				<input type="radio" id="noi" name="age" value="3" onclick="mudarHora(this.value)">
+				<label for="noite"> Noite </label><br>
+			</form>
+			
+			<label><b>Inserir placa</b></label>
+			<input type="text" onfocus="this.value=''" value="valor" placeholder="inserir placa" id="placaInput">
+			<br>
+			<div class="tooltip" style="">
+				<input type="text" readonly value="" id=alertaPlaca style="background-color: #ccc">
+				<button onclick="copiarPlaca()" onmouseout="outFunc()">
+					<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+					Copiar alerta de placa</button>
+			</div>
+
+		</div>
+
+		<br>
+		<hr>
+		
+		<div class="respostaWhats" style="display:flex; justify-content:space-around;">
+			<div class="tudoCerto">
+			<input readonly value="tudo certo, agradecemos a informação" style="background-color:#ccc" id="tudoCerto">
+				<div class="tooltip">
+					<button onclick="copiarTudoCerto()" onmouseout="outFunc()" style="background-color: #FFFF33">
+						<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+						Copiar tudo certo
+					</button>
+			</div>
+			</div>
+			
+			<div class="previSaida">
+			<input readonly value="tem data de previsão de saída do veículo?" style="background-color:#ccc" id="previSaida">
+				<div class="tooltip">
+					<button onclick="copiarPrevisaoSaida()" onmouseout="outFunc()" style="background-color: #FFFF99">
+						<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+						Copiar previsao de saida
+					</button>
+			</div>
+			</div>
+			
+			<div class="estaManut">
+			<input readonly value="este veículo esta em manutenção?" style="background-color:#ccc" id="estaManut">
+				<div class="tooltip">
+					<button onclick="copiarEstaManut()" onmouseout="outFunc()" style="background-color: #ffcc99">
+						<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+						Copiar esta manutencao
+					</button>
+			</div>
+			</div>
+			
+			<div class="naoLidamos">
+			<input readonly id="naoLidamos" value="Não lidamos com essa parte na central de roubo e furtos. Vou te passar o contato do setor que pode te auxiliar" id="jammerado" style="background-color: #ccc">
+			<div class="tooltip">
+				<button onclick="copiarNaoLidamos()" onmouseout="outFunc()" style="background-color: #ff9500">
+					<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+					Copiar Não Lidamos
+				</button>
+			</div>
+			</div>
+		</div>
+			
+		<br>
+		<hr>
+		
+		<div class=gerarWhats style="display: flex; flex-direction: column; align-items: center;">
+			
+			
+			<label><b>Inserir telefone</b></label>
+			<input type="number" onfocus="this.value=''" value="valor" placeholder="inserir whats" id="whatsInput">
+			<br>		
+			<button onclick="copiarZap()" onmouseout="outFunc()" style="background-color:#25D366; color:#fff">Abrir conversa</button>
+			
+			
+		</div>
+
+
+		<div class="enderecosFormat" style="background-color:#ccc">
+			<h3>Formatador endereco</h3>
+
+
+			<div id="tracker">
+				<div class="gerarTracker">
+					<label>TRACKER</label>
+					<input type="text" onfocus="this.value=''" value="endereco" placeholder="inserir endereco tracker" id="endTracker" style="width: 70%;">
+					<div class="tooltip">
+						<button onclick="gerarTracker()" onmouseout="outFunc()" style="background-color: #910302; color: white">
+							<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+							Gerar
+						</button>
+					</div>
+				</div>
+				<br>
+				<div class="geradosTracker">
+					<label>Hora:</label>
+					<input type="text" value="00" placeholder="hora" id=horaTracker>
+					<div class="tooltip">
+						<button onclick="copiarHoraTracker()" onmouseout="outFunc()">
+							<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+							Copiar hora
+						</button>
+					</div>
+					
+					<label>Placa:</label>
+					<input type="text" value="01" placeholder="hora" id=placaTracker>
+					<div class="tooltip">
+						<button onclick="copiarHoraTracker()" onmouseout="outFunc()">
+							<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+							Copiar placa
+						</button>
+					</div>
+					
+					<label>Cidade:</label>
+					<input type="text" value="02" placeholder="hora" id=ciddTracker>
+					<div class="tooltip">
+						<button onclick="copiarHoraTracker()" onmouseout="outFunc()">
+							<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+							Copiar cidade
+						</button>
+					</div>
+					
+					<label>Rua:</label>
+					<input type="text" value="03" placeholder="hora" id=ruaTracker>
+					<div class="tooltip">
+						<button onclick="copiarHoraTracker()" onmouseout="outFunc()">
+							<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+							Copiar rua
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="ceabs">
+				<div class="gerarCEABS">
+				<br>
+					<label>CEABS</label>
+					<input type="text" onfocus="this.value=''" value="endereco" placeholder="inserir endereco ceabs" id="endCeabs" style="width: 70%;">
+					<div class="tooltip">
+						<button onclick="gerarCeabs()" onmouseout="outFunc()" style="background-color: #d15b47; color: white">
+							<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+							Gerar
+						</button>
+					</div>
+				</div>
+				<br>
+				<div class="geradosCEABS">
+					<label>Hora:</label>
+					<input type="text" value="00" placeholder="hora" id=horaCeabs>
+					<div class="tooltip">
+						<button onclick="copiarHoraTracker()" onmouseout="outFunc()">
+							<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+							Copiar hora
+						</button>
+					</div>
+					
+					<label>Placa:</label>
+					<input type="text" value="01" placeholder="hora" id=placaCeabs>
+					<div class="tooltip">
+						<button onclick="copiarHoraTracker()" onmouseout="outFunc()">
+							<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+							Copiar placa
+						</button>
+					</div>
+					
+					<label>Cidade:</label>
+					<input type="text" value="02" placeholder="hora" id=ciddCeabs>
+					<div class="tooltip">
+						<button onclick="copiarHoraTracker()" onmouseout="outFunc()">
+							<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+							Copiar cidade
+						</button>
+					</div>
+					
+					<label>Rua:</label>
+					<input type="text" value="03" placeholder="hora" id=ruaCeabs>
+					<div class="tooltip">
+					<button onclick="copiarHoraTracker()" onmouseout="outFunc()">
+						<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+						Copiar rua
+					</button>
+				</div>
+				</div>
+			</div>
+			
+			<br>
+			<div id="apvs">
+				<div class="gerarApvs">
+					<label>APVS</label>
+					<input type="text" onfocus="this.value=''" value="endereco" placeholder="inserir endereco apvs-truck" id="endAvps" style="width: 70%;">
+					<div class="tooltip">
+						<button onclick="gerarApvs()" onmouseout="outFunc()" style="background-color: #012255; color: white">
+							<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+							Gerar
+						</button>
+					</div>
+				</div>	
+				<br>
+				<div class="geradosApvs">	
+					<label>Hora:</label>
+					<input type="text" value="00" placeholder="hora" id=horaAvps>
+					<div class="tooltip">
+							<button onclick="copiarHoraTracker()" onmouseout="outFunc()">
+								<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+								Copiar hora
+							</button>
+						</div>
+					
+					<label>Placa:</label>
+					<input type="text" value="01" placeholder="hora" id=placaAvps>
+					<div class="tooltip">
+						<button onclick="copiarHoraTracker()" onmouseout="outFunc()">
+							<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+							Copiar placa
+						</button>
+					</div>
+					
+					<label>Cidade:</label>
+					<input type="text" value="02" placeholder="hora" id=ciddAvps>
+					<div class="tooltip">
+						<button onclick="copiarHoraTracker()" onmouseout="outFunc()">
+							<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+							Copiar cidade
+						</button>
+					</div>
+					
+					<label>Rua:</label>
+					<input type="text" value="03" placeholder="hora" id=ruaAvps>
+					<div class="tooltip">
+					<button onclick="copiarHoraTracker()" onmouseout="outFunc()">
+						<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+						Copiar rua
+					</button>
+				</div>
+				</div>
+			</div>
+		</div>
+
+		<br>
+		
+		<div style="display: flex; justify-content: space-around">
+			<div class="certoRelatorio">
+			<input readonly value="tudo certo" style="background-color:#ccc" id="tudoCerto">
+				<div class="tooltip">
+					<button onclick="copiar()" onmouseout="outFunc()" style="background-color: #fff700">
+						<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+						Copiar tudo certo
+					</button>
+			</div>
+		</div>
+			<div class="manutenRelatorio">
+			<input readonly value="tudo certo" style="background-color:#ccc" id="tudoCerto">
+				<div class="tooltip">
+					<button onclick="copiar()" onmouseout="outFunc()" style="background-color: #fff700">
+						<span class="tooltiptext" id="myTooltip">Clique para copiar</span>
+						Copiar tudo certo
+					</button>
+			</div>
+		</div>
+		</div>	
+		
+		<br>
+		<hr>
+		
+	</div>
+</body>
+
+<script>
+
+
+
+function copiarAnalis() {
+  var copyText = document.getElementById("analis");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copiado";
+}
+
+function copiarEstaBemCondutor() {
+  var copyText = document.getElementById("estabem");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copiado";
+}
+
+function copiarManutencaoVeiculo() {
+  var copyText = document.getElementById("manutencado");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copiado";
+}
+
+function copiarJammeradoVeiculo() {
+  var copyText = document.getElementById("jammerado");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copiado";
+}
+
+function copiarGaragemVeiculo() {
+  var copyText = document.getElementById("garagem");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copiado";
+}
+
+function copiarPlaca() {
+  
+  const mss1 = ". SOMOS DA CENTRAL DE MONITORAMENTO DA APVS TRUCK. O VEICULO DE PLACA "
+  const placa = document.getElementById("placaInput").value;
+  const mss2 = " GEROU ALERTA, ESTA TUDO CERTO?? \n SE POSSIVEL NOS ENVIE FOTO DO VEÍCULO PARA CONFIRMAÇÃO"
+
+  if (dia == 0){
+   alert('Informe a hora do dia e a placa')
+  } else {
+
+  document.getElementById("alertaPlaca").value = dia + mss1 + placa + mss2
+
+  var copyText = document.getElementById("alertaPlaca");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copiado";
+  }
+}
+
+function mudarHora(m){
+  switch(m){
+    case "1": dia = 'BOM DIA';
+    break;
+    case "2": dia = 'BOA TARDE';
+    break;
+    case "3": dia = 'BOA NOITE';
+    break;
+    default: '0';
+  }
+
+  return dia
+}
+
+let dia = 0
+
+function copiarTudoCerto(){
+	var copyText = document.getElementById("tudoCerto");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copiado";
+}
+
+function copiarPrevisaoSaida(){
+	var copyText = document.getElementById("previSaida");
+	copyText.select();
+	copyText.setSelectionRange(0, 99999);
+	document.execCommand("copy");
+  
+	var tooltip = document.getElementById("myTooltip");
+	tooltip.innerHTML = "Copiado";
+}
+
+function copiarEstaManut(){
+	var copyText = document.getElementById("estaManut");
+	copyText.select();
+	copyText.setSelectionRange(0, 99999);
+	document.execCommand("copy");
+  
+	var tooltip = document.getElementById("myTooltip");
+	tooltip.innerHTML = "Copiado";
+
+}
+
+function copiarNaoLidamos(){
+	var copyText = document.getElementById("naoLidamos");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copiado";
+}
+
+function copiarZap(){
+
+	const wazap = document.getElementById("whatsInput").value
+
+	if (wazap == ''){
+	
+	alert('Informe um numero de whatsapp')
+	
+	} else {
+
+	window.open('https://web.whatsapp.com/send?phone=55' + wazap + 'source=&data=&text=',  '_blank');
+	
+	}
+}
+
+function gerarApvs(){
+
+	let apvsHora = document.getElementById("endAvps").value.search(":");
+	let apvsHora1 = document.getElementById("endAvps").value.split(" ")[4];
+	
+	let apvsPlaca = document.getElementById("endAvps").value.split(" ");
+	
+	let apvsCidd = document.getElementById("endAvps").value.split(" ");
+	
+	let apvsRua = document.getElementById("endAvps").value.split(" ");
+
+	let apvsText = document.getElementById("endAvps").value.split(" ");
+
+	console.log(apvsHora);
+	console.log(apvsHora1);
+	
+
+}
+
+function outFunc() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Clique para copiar";
+}
+
+
+
+/*
+
+
+APVS
+
+Sem Motorista		Intervalo em movimento	08/10/2020 13:50:46	08/10/2020 13:50:41	0	63849	1486		-23.697098	-46.497927	Rua Nátilus de Loreto, 475, Vila Suíça, Santo André - SP, 09131-110, Brasil
+
+CEABS
+
+AAK5519		ABRASCAM,Todos	30/09/2020 09:25:01	Cambé	PR	Rodovia Celso Garcia (3152-3318) - CEP: 86185520		0	Desligada	12,4	Não	Não			761.743	VOLKSWAGEN 17-210 3-Eixos 2p (diesel)	BRANCA	-23.309406	-51.219707	0		J.F. SOLUCOES AMBIENTAIS	vei19082033460	1308892939	9BWCK82T71R115209
+
+
+TRACKER
+
+Seq: 20460 - Válido
+Data Comunicação: 30/09/2020 09:34:55
+S/C: 7m
+Data Posição: 30/09/2020 09:33:00
+Dispositivo: GV75 30077327
+Veículo: DTA5995
+Proprietario: EDUARDO DOS SANTOS ANTUNES DE OLIVEIRA
+Velocidade: 0.0Km/h
+Proa: 232.0
+Bateria do Veículo: 26.04 volts
+Bateria do rastreador: 93%
+Odômetro: 111.742 KM 400 metros
+Localizacao: rua Lucidalva Da Silva - Sao Bernardo Do Campo - Sp
+ -23.752556 -46.600815
+Evento:   Posição
+
+
+
+file:///C:/Users/user/Desktop/OPERADORES/Artur/Bloco%20de%20notas/prog/autocopy/doc-mensagem.html
+
+file:///C:/Users/user/Desktop/OPERADORES/Artur/Bloco%20de%20notas/prog/prin/lan.html
+
+*/
+
+</script>
+
+
+
+
+</html>
