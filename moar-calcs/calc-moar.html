@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<html lang=”en”>
+<head>
+<title>Lan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+<body>
+
+
+	<label><b>How many Moar hours?</b></label>
+	<input type="number" onfocus="this.value=''" value="word" placeholder="kimun" id="secondsmoar">
+
+	<br>
+	<br>
+	<br>
+	
+	<button onclick="calcsecondsmoar()" > how many seconds? </button>
+
+
+	<br>
+	<br>
+	<br>
+	
+	<button onclick="calmagweight()" > insert weight </button>
+	<br>
+	<button onclick="calmagheight()" > insert height </button>
+	<br>
+	<button onclick="calmagage()" > insert age </button>
+	<br>
+	<button onclick="calmagsex()" > insert sex </button>
+
+
+
+
+<!--
+
+how many years training
+how many times a day
+how often do you drink mana fluid
+when magicata
+
+
+
+
+
+	<button onclick="calcmagreach()" > insert reach </button>
+	<br>
+
+
+ -->
+
+</body>
+
+
+<script>
+
+function calcsecondsmoar(){
+	
+	const moarhour = document.getElementById('secondsmoar').value;
+	const calcfromMtoE1 = moarhour * 2500
+	const calcfromMtoE2 = calcfromMtoE1/60
+	const calcfromMtoE3 = Math.round(calcfromMtoE2/60)
+	const calcfromMtoE4 = calcfromMtoE2%60
+	console.log(calcfromMtoE1 + " - total seconds")
+	console.log(calcfromMtoE2 + " - total minutes") 
+	console.log(calcfromMtoE3 + " hour")
+	console.log(calcfromMtoE4 + " min")
+	const calcfromMtoE5 = moar/32
+	console.log(calcfromMtoE5 + " - percentagem no dia de moar")
+
+// if (dia == 0){
+//   alert('Informe a hora do dia e a placa')
+//  } else {
+
+
+}
+
+//
+// se 1h em moar eh 50x50
+//
+// 50x50 - 1h
+// 60x60 - x 
+//
+// 3600/2500  = 14,4
+
+
+////// 
+////// 
+
+//??? 1 hora na terra eh 1 hora, 2min e 10s(250+110segundos) em moar 
+//??? 1 hora em moar eh (250sgundos) eh 40min e 10 segundos terrestres
+//
+
+
+//passaram-se 3horas em moar. quanto isso é na terra?
+//3(2500) = 7500/60= 125min >> 2h 5 min
+//
+
+function calmagweight(){
+
+console.log('called weight')
+
+}
+
+function calmagheight(){
+
+console.log('called height')
+
+//reach too
+
+
+}
+
+function calmagage(){
+
+console.log('called age')
+
+}
+
+
+function calmagsex(){
+
+console.log('called sex')
+
+}
+
+function calcsecondsterra(){
+
+
+}
+
+
+</script>
+
+
+</html>
