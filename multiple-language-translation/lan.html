@@ -31,12 +31,14 @@
 function generateLinksTranslate(){
 	const prinword = document.getElementById('wordInput').value;
 
+	window.open('https://en.wiktionary.org/wiki/'+prinword+'');
 	window.open('https://en.wikipedia.org/wiki/'+prinword+'');
 	window.open('https://translate.google.com/?hl=en#view=home&op=translate&sl=en&tl=es&text='+prinword+'');
 	window.open('https://context.reverso.net/translation/english-spanish/'+prinword+'');
 	window.open('https://translate.google.com/?hl=en#view=home&op=translate&sl=en&tl=zh-CN&text='+prinword+'');
 	window.open('https://context.reverso.net/translation/english-chinese/'+prinword+'');
 	window.open('https://translate.google.com/?hl=en#view=home&op=translate&sl=en&tl=hi&text='+prinword+'');
+	//window.open('https://www.shabdkosh.com/translate/english-hindi#en/hi/'+prinword+'');
 	window.open('https://translate.google.com/?hl=en#view=home&op=translate&sl=en&tl=ru&text='+prinword+'');
 	window.open('https://context.reverso.net/translation/english-russian/'+prinword+'');
 	window.open('https://translate.google.com/?sl=en&tl=ar&text='+prinword+'&op=translate&hl=en');
@@ -49,6 +51,7 @@ function generateLinksTranslate(){
 	window.open('https://translate.google.com/?sl=en&tl=tr&text='+prinword+'&op=translate&hl=en');
 	window.open('https://context.reverso.net/translation/english-turkish/'+prinword+'');
 	window.open('https://translate.google.com/?sl=en&tl=te&text='+prinword+'&op=translate&hl=en');
+	//window.open('https://www.shabdkosh.com/search-dictionary?lc=te&sl=en&tl=te&e='+prinword+'');	
 	window.open('https://translate.google.com/?sl=en&tl=ja&text='+prinword+'&op=translate&hl=en');
 	window.open('https://context.reverso.net/translation/english-japanese/'+prinword+'');
 	window.open('https://translate.google.com/?sl=en&tl=vi&text='+prinword+'&op=translate&hl=en');
@@ -57,14 +60,23 @@ function generateLinksTranslate(){
 
 function generateLinksTranslateII(){
 	const prinword = document.getElementById('wordInput').value;
+	
+	//add quechua, guarani, etc do google
+	
 
+	window.open('https://en.wiktionary.org/wiki/'+prinword+'');
+	window.open('https://en.wikipedia.org/wiki/'+prinword+'');
+	window.open('https://en.bab.la/translator/');
 	window.open('https://translate.google.com/?sl=en&tl=ka&text='+prinword+'&op=translate&hl=en');//georgia-asia-georgia
 	window.open('https://translate.google.com/?sl=en&tl=mn&text='+prinword+'&op=translate&hl=en');//mongolian-asia-mongolia
 	window.open('https://translate.google.com/?sl=en&tl=eu&text='+prinword+'&op=translate&hl=en');//basque/euskara-europe-spain
 	window.open('https://glosbe.com/en/luo/'+prinword);//luo/dholuo-africa-kenya
 	window.open('https://tradukka.com/translate/en/yue/'+prinword);//cantonese/yue-asia-china
+	window.open('https://translate.google.com/?sl=en&tl=gn&text='+prinword+'&op=translate&hl=en');//guarani-s.america-brazil-paraguai
 	window.open('https://glosbe.com/en/gn/'+prinword);//guarani-s.america-brazil-paraguai
+	window.open('https://translate.google.com/?sl=en&tl=qu&text='+prinword+'&op=translate&hl=en');//quechua-s.america-peru
 	window.open('https://glosbe.com/en/qu/'+prinword);//quechua-s.america-peru
+	window.open('https://translate.google.com/?sl=en&tl=ay&text='+prinword+'&op=translate&hl=en');//aymara-s.america-peru-bolivia
 	window.open('https://glosbe.com/en/ay/'+prinword);//aymara-s.america-peru-bolivia
 	window.open('https://tradukka.com/translate/en/yua/'+prinword);//yucatec maya-c.america-belize-guatemala-mexico
 	window.open('https://www.freelang.net/online/nahuatl.php?lg=gb');//nawatl-n.america-mexico
@@ -85,6 +97,36 @@ function generateLinksTranslateII(){
 	window.open('https://translate.google.com/?sl=en&tl=yi&text='+prinword+'&op=translate&hl=en');
 	window.open('https://translate.google.com/?sl=en&tl=mi&text='+prinword+'&op=translate&hl=en');
 	window.open('https://translate.google.com/?sl=en&tl=ga&text='+prinword+'&op=translate&hl=en');
+	window.open('https://www.focloir.ie/en/dictionary/ei/'+prinword);
+	
+	
+	/*
+	
+	
+	
+	for english > german
+	for spanish > french
+	for indonesian > javanese
+	for hungarian > finish
+	for russian > ukranian?
+	for arabic > hebrew?
+	for hindi > bengali
+	for chinese mandarin > cantones
+	for vietnam > 
+	for thai > cambiaan?
+	for turkish > 
+	for swahili > 
+	for latin and greek > esperanto
+	yoruba
+	guarani
+	navajo
+	groenlandes > norwegian
+	...
+	
+	
+	
+	*/
+	
 	
 
 }
